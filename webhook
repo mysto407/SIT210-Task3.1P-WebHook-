@@ -1,0 +1,12 @@
+int lightPin = A2; // Analog input pin connected to the photodiode sensor
+int light = 0;     // Variable for light level
+
+void setup() {
+    pinMode(lightPin, INPUT); // light sensor pin as input
+}
+
+void loop() {
+    light = analogRead(lightPin); // Read the light level from the sensor
+    Particle.publish("light", String(light), PRIVATE); // Publish the light intensity 
+    delay(30000); // 30 seconds
+}
